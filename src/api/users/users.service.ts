@@ -47,9 +47,10 @@ export class UsersService {
     } 
 
     public async loginUser(payload:loginUserDto):Promise<InUser>{
+        console.log(payload)
         const user =  await this.userModelService.getByIdQuery({email:payload.email});
         
-        if(!await bcrypt_validate(payload.password, user.password)){
+        if( !user || !await bcrypt_validate(payload.password, user.password) ){
             throw new HttpException({
                 message: errorCodes.USER.LOGIN_FAILED.description
             }, HttpStatus.UNAUTHORIZED)
