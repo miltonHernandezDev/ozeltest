@@ -60,6 +60,6 @@ export class UsersController {
   ): Promise<any | Response> {
     return res
       .status(HttpStatus.OK)
-      .json(await this.userService.deleteOne(_id));
+      .json({data:await this.userService.deleteOne(_id)});
   }
 }
