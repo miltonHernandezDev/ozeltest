@@ -15,11 +15,11 @@ import { Request, Response } from 'express';
 import { loginUserDto, registerUser } from 'src/models/users-model/dto/UserDto';
 import { UsersService } from './users.service';
 
-@Controller()
+@Controller('/signup')
 export class UsersController {
   constructor(private userService: UsersService) {}
 
-  @Post('/signup')
+  @Post('/')
   public async createNewUser(
     @Res() res: Response,
     @Body() payload: registerUser,
@@ -61,15 +61,5 @@ export class UsersController {
     return res
       .status(HttpStatus.OK)
       .json(await this.userService.deleteOne(_id));
-  }
-
-  @Post('/login')
-  public async loginUser(
-    @Res() res: Response,
-    @Body() payload: loginUserDto,
-  ): Promise<any | Response> {
-    return res
-      .status(HttpStatus.OK)
-      .json(await this.userService.loginUser(payload));
   }
 }
