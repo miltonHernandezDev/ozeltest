@@ -15,7 +15,7 @@ import {
 
 
 
-    @Post('/login')
+    @Post('/')
   public async loginUser(
     @Res() res: Response,
     @Body() payload: loginUserDto,
