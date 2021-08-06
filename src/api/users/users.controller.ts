@@ -19,7 +19,7 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private userService: UsersService) {}
 
-  @Post('/')
+  @Post('/signup')
   public async createNewUser(
     @Res() res: Response,
     @Body() payload: registerUser,
